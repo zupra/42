@@ -2,9 +2,8 @@
 // const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 /**/
 export default function ({ $axios, $storage, $toast }) {
-  //const token = store.state.storage.api_token
 
-  $axios.setToken($storage.getUniversal('api_token'), 'Bearer')
+  $storage.getUniversal('api_token') && $axios.setToken($storage.getUniversal('api_token'), 'Bearer')
 
 
   /* INVALID TOKEN */
