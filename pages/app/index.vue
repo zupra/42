@@ -1,9 +1,12 @@
 <template>
   <div class="m-auto container">
 
-    <pre v-if="userInfo">{{userInfo}}</pre>
+    <a-tabs default-active-key="1" @change="callback">
+      <a-tab-pane key="1" tab="userInfo">
+        <pre v-if="userInfo">{{userInfo}}</pre>
+      </a-tab-pane>
+    </a-tabs>
 
-    </div>
   </div>
 </template>
 
@@ -35,6 +38,10 @@ export default {
     this.getUserInfo() 
   },
   methods: {
+    callback(key) {
+      console.log(key);
+    },
+
     async getUserInfo() {
       try {
         const data = await this.$axios.$get('user/info')
