@@ -1,0 +1,24 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  environment:
+    name: Production
+    url: https://agentprox.com/
+  only:
+    - master
+  script:
+    - export DATE=`date '+%Y-%m-%d-%H-%M'`
+    - export NEWDIR=/home/server/builds/agentprox.com-$DATE
+    - export OLDDIR=`pwd`
+    - cp -r $OLDDIR $NEWDIR
+    - cd $NEWDIR
+    - mkdir -p ~/node_modules
+    - ln -s ~/node_modules $NEWDIR/node_modules
+    - yarn install
+    - yarn build
+    - yarn start
+    - rm -rf ~/agentprox.com
+    - ln -s $NEWDIR ~/agentprox.com
+    - rm -rf ~/agentprox.com/.git
