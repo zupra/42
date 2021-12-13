@@ -14,10 +14,9 @@ deploy:
     - export OLDDIR=`pwd`
     - cp -r $OLDDIR $NEWDIR
     - cd $NEWDIR
-    - mkdir -p ~/node_modules
-    - ln -s ~/node_modules $NEWDIR/node_modules
-    - yarn && yarn build
-    - nuxt generate
+#    - mkdir -p ~/node_modules
+#    - ln -s ~/node_modules $NEWDIR/node_modules
+    - yarn && yarn generate
     - rm -rf ~/agentprox.com
     - ln -s $NEWDIR ~/agentprox.com
     - rm -rf ~/agentprox.com/.git
