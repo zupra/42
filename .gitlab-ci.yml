@@ -16,9 +16,8 @@ deploy:
     - cd $NEWDIR
     - mkdir -p ~/node_modules
     - ln -s ~/node_modules $NEWDIR/node_modules
-    - yarn install
-    - yarn build
-    - yarn start
+    - yarn && yarn build
+    - nuxt generate
     - rm -rf ~/agentprox.com
     - ln -s $NEWDIR ~/agentprox.com
     - rm -rf ~/agentprox.com/.git
