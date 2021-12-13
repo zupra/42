@@ -1,0 +1,11 @@
+/* @import 'ant-design-vue/dist/antd.css'; */
+
+.page-enter-active, .page-leave-active { transition: opacity .2s; }
+.page-enter, .page-leave-active { opacity: 0; }
+
+
+
+[disabled] {
+  pointer-events: none;
+  /* opacity: .48; */
+}
