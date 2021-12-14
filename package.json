@@ -14,6 +14,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/toast": "^3.3.1",
     "@nuxtjs/universal-storage": "^0.5.9",
+    "@tiptap/starter-kit": "^2.0.0-beta.157",
+    "@tiptap/vue-2": "^2.0.0-beta.71",
     "ant-design-vue": "^1.7.6",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7"
