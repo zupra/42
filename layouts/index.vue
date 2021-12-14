@@ -446,8 +446,8 @@
             size="large" 
             type="primary"
             :disabled="Object.values(loginData).includes('')"
-            @click="register(loginData)">Зарегистрироваться</a-button>
-          </a-card>
+            @click="register(loginData)">Зарегистрироваться
+          </a-button>
         </CTab>
         <CTab name="Войти">
           <a-input name="email" size="large" v-model="loginData.email" placeholder="email"/>
@@ -499,16 +499,16 @@ export default {
           ...USER,
         })
         .then((response) => {
-          this.$message.success('Вы зарегистрировались');
+          this.$message.success('Вы зарегистрировались')
           this.TAB = 1
         })
         .catch((error) => {
+          // alert( JSON.stringify(error?.response?.data) )
           this.$notification.error({
             message: 'Ошибка',
             description: `${JSON.stringify(error?.response?.data)}`,
           })
           // this.$message.error(`${JSON.stringify(error?.response?.data)}`, 5);
-          // alert( JSON.stringify(error?.response?.data) )
         })
     },
 
@@ -517,30 +517,18 @@ export default {
         .$post('user/login', {
           ...USER,
         })
-        // .then((data) => this.$storage.setUniversal('api_token', data))
-        // .then((data) => alert(JSON.stringify(data.token)))
         .then((data) => {
-          // alert(JSON.stringify(data.token));
-          this.$storage.setUniversal('api_token', data.token);
-          this.$message.success('Успешно');
-          
-          // location.reload()
-          // this.$storage.getUniversal('api_token') && this.$router.push('/app');
-          
-          // this.$axios.setToken(this.$storage.getUniversal('api_token'), 'Bearer')
-          // this.$router.redirect('/app');
-          // this.$axios.setToken(data.token, 'Bearer')
-
-          this.showLightbox = false;
-          this.$router.push('/app');
-          // (() => new Promise((resolve) => setTimeout(this.$router.push('/app'), 2000)))()
-
+          this.$storage.setUniversal('api_token', data.token)
+          this.$message.success('Успешно')
+          this.showLightbox = false
+          this.$router.push('/app')
         })
         .catch((error) => {
-          error.response && this.$notification.error({
-            message: 'Ошибка',
-            description: `${JSON.stringify(error?.response?.data)}`,
-          })
+          error.response &&
+            this.$notification.error({
+              message: 'Ошибка',
+              description: `${JSON.stringify(error?.response?.data)}`,
+            })
         })
     },
   },
