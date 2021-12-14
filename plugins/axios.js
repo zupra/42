@@ -1,10 +1,10 @@
 // Authorization
-// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
-/**/
-export default function ({ $axios, $storage, $toast }) {
+export default function ({ $axios, store, $toast }) {
 
-  $storage.getUniversal('api_token') && $axios.setToken($storage.getUniversal('api_token'), 'Bearer')
-
+  $axios.onRequest(config => {
+    const token = store.state.storage.api_token
+    $axios.setToken(token, 'Bearer')
+  })
 
   /* INVALID TOKEN */
   $axios.onError((error) => {
@@ -16,7 +16,7 @@ export default function ({ $axios, $storage, $toast }) {
         keepOnHover: true,
         action: {
           text: 'Войти',
-          href: `${this.$config.API_URL}entrance`,
+          href: '/',
         },
       })
     }
