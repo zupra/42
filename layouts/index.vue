@@ -286,7 +286,8 @@
                   w-full
                   bg-gray-100 bg-opacity-50
                   rounded
-                  border !border-gray-300
+                  border
+                  !border-gray-300
                   focus:ring-2
                   focus:bg-transparent
                   focus:ring-indigo-200
@@ -437,28 +438,63 @@
     <CLightbox :show.sync="showLightbox">
       <CTabs :idx="TAB" class="w-300px">
         <CTab name="Зарегистрироваться">
-          <a-input name="name" size="large" v-model="loginData.name" placeholder="name"/>
-          <a-input name="email" size="large" class="!mt-2" v-model="loginData.email" placeholder="email"/>
-          <a-input-password name="password" size="large" class="!my-2" v-model="loginData.password" placeholder="password"/>
-          <a-button
-            class="mt-6"
-            block
-            size="large" 
-            type="primary"
-            :disabled="Object.values(loginData).includes('')"
-            @click="register(loginData)">Зарегистрироваться
-          </a-button>
+          <form @submit.prevent="register(loginData)">
+            <a-input
+              name="name"
+              size="large"
+              v-model="loginData.name"
+              placeholder="name"
+            />
+            <a-input
+              name="email"
+              size="large"
+              class="!mt-2"
+              v-model="loginData.email"
+              placeholder="email"
+            />
+            <a-input-password
+              name="password"
+              size="large"
+              class="!my-2"
+              v-model="loginData.password"
+              placeholder="password"
+            />
+            <a-button
+              class="mt-6"
+              block
+              size="large"
+              html-type="submit"
+              type="primary"
+              :disabled="Object.values(loginData).includes('')"
+              >Зарегистрироваться
+            </a-button>
+          </form>
         </CTab>
         <CTab name="Войти">
-          <a-input name="email" size="large" v-model="loginData.email" placeholder="email"/>
-          <a-input-password name="password" size="large" class="!my-2" v-model="loginData.password" placeholder="password" />
-          <a-button
-            class="mt-6"
-            block
-            size="large" 
-            type="primary" 
-            :disabled="!loginData.email && !loginData.password"
-            @click="login(loginData)">Войти</a-button>
+          <form @submit.prevent="login(loginData)">
+            <a-input
+              name="email"
+              size="large"
+              v-model="loginData.email"
+              placeholder="email"
+            />
+            <a-input-password
+              name="password"
+              size="large"
+              class="!my-2"
+              v-model="loginData.password"
+              placeholder="password"
+            />
+            <a-button
+              class="mt-6"
+              block
+              size="large"
+              html-type="submit"
+              type="primary"
+              :disabled="!loginData.email && !loginData.password"
+              >Войти</a-button
+            >
+          </form>
         </CTab>
       </CTabs>
 
@@ -473,9 +509,6 @@
         </a-tabs>
       </div> -->
     </CLightbox>
-
-
-
   </div>
 </template>
 
@@ -484,13 +517,16 @@ export default {
   data() {
     return {
       TAB: 0,
-      showLightbox: false,
+      showLightbox: false, // $route.hash === '#login' ? true : false,
       loginData: {
         name: '',
         email: '',
         password: '',
       },
     }
+  },
+  created() {
+    if (this.$route.hash === '#login') this.showLightbox = true
   },
   methods: {
     register(USER) {

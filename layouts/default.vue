@@ -27,14 +27,25 @@
     </header>
     <div class="mx-auto mt-20 container grid grid-cols-[200px,1fr]">
       <aside class="flex flex-col">
+
+
         <N-link
-          v-for="(V, K, idx) in { 'Main': '/app', 'Content': '/app/content', 'Tariff': '/app/tariff', 'User': '/app/user' }"
-          :key="idx"
-          :to="V"
-          class="bg-gray-100 py-1 px-3 m-2"
-        >
-          {{ K }}
+            to="/app"
+            class="bg-gray-100 py-1 px-3 m-2"
+          >
+          Main
         </N-link>
+        <template v-if="is_admin">
+          is_admin
+          <N-link
+            v-for="(V, K, idx) in {'Content': '/app/content', 'Tariff': '/app/tariff', 'User': '/app/user' }"
+            :key="idx"
+            :to="V"
+            class="bg-gray-100 py-1 px-3 m-2"
+          >
+            {{ K }}
+          </N-link>
+        </template>
       </aside>
 
       <Nuxt class="m-4" />
@@ -51,15 +62,17 @@ export default {
       collapsed: false,
     }
   },
-
+  computed: {
+    is_admin() {
+      return this.$store.state.storage.is_admin // this.store?.state?.storage?.is_admin
+    }
+    
+  },
   methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed
-    },
     async logout() {
       await this.$axios.$post('user/logout')
       this.$storage.removeUniversal('api_token')
-      this.$storage.removeUniversal('whoami')
+      this.$storage.removeUniversal('is_admin')
       this.$router.push('/')
     },
   },
