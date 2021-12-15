@@ -10,12 +10,13 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    const [info] = await Promise.all([
+  async asyncData({ $axios, $storage }) {
+    const [user] = await Promise.all([
       $axios.$get('/user/info'),
     ])
+    user.roles.includes('admin') && $storage.setUniversal('is_admin', true)
     return {
-      userInfo: info,
+      userInfo: user,
     }
   },
   data() {

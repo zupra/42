@@ -61,11 +61,13 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/universal-storage',
+    '@nuxtjs/toast',
   ],
   storage: {
     initialState: {
       api_token: '',
       whoami: null,
+      is_admin: '',
     },
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
