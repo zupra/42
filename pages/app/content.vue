@@ -1,34 +1,45 @@
 <template>
-<div>
+  <div>
+    <a-tabs default-active-key="1">
+      <a-tab-pane key="1" tab="Редактировать">
+        <a-card class="!mb-6" title="Редактировать контент">
+          <pre
+            style="height: 300px"
+            class="p-1 bg-gray-50 text-xs overflow-auto resize-y"
+            >{{ contentList }}</pre
+          >
+          <TContent :data="contentList" />
+        </a-card>
+      </a-tab-pane>
+      <a-tab-pane key="2" tab="Добавить">
+        <a-card class="!mb-6" title="Добавить контент">
+          <a-tabs default-active-key="1" @change="callback">
+            <a-tab-pane key="1" tab="Новость"></a-tab-pane>
+            <a-tab-pane key="2" tab="Статья"></a-tab-pane>
+          </a-tabs>
 
-
-  <pre 
-    style="height:300px"
-    class="p-1 bg-gray-50 text-xs overflow-auto resize-y">{{contentList}}</pre>
-  <TContent :data="contentList" />
-
-  <a-card class="!mb-6" title="Добавить контент">
-    <a-tabs default-active-key="1" @change="callback">
-      <a-tab-pane key="1" tab="Новость"></a-tab-pane>
-      <a-tab-pane key="2" tab="Статья"></a-tab-pane>
+          <a-input v-model="contentData.title" placeholder="title" />
+          <a-input
+            class="!mt-4"
+            v-model="contentData.anons"
+            placeholder="anons"
+          />
+          <a-textarea
+            class="!my-4"
+            v-model="contentData.content"
+            placeholder="content"
+          />
+          <a-button type="primary" @click="setContent">POST</a-button>
+        </a-card>
+      </a-tab-pane>
     </a-tabs>
-
-    <a-input v-model="contentData.title" placeholder="title"/>
-    <a-input class="!mt-4" v-model="contentData.anons" placeholder="anons"/>
-    <a-textarea class="!my-4" v-model="contentData.content" placeholder="content"/>
-    <a-button type="primary" @click="setContent">POST</a-button>
-  </a-card>
-
-
-</div>
+  </div>
 </template>
 
 <script>
 export default {
   async asyncData({ $axios }) {
-    const [content] = await Promise.all([
-      $axios.$get('/admin/content'),
-    ])
+    const [content] = await Promise.all([$axios.$get('/admin/content')])
     return {
       contentList: content.data,
     }
@@ -61,10 +72,8 @@ export default {
     //   this.newsList = data
     // },
   },
-
 }
 </script>
 
 <style>
-
 </style>

@@ -28,7 +28,7 @@
     <div class="mx-auto mt-20 container grid grid-cols-[200px,1fr]">
       <aside class="flex flex-col">
         <N-link
-          v-for="(V, K, idx) in { 'Main': '/app', 'Content': '/app/content' }"
+          v-for="(V, K, idx) in { 'Main': '/app', 'Content': '/app/content', 'Tariff': '/app/tariff', 'User': '/app/user' }"
           :key="idx"
           :to="V"
           class="bg-gray-100 py-1 px-3 m-2"
