@@ -14,8 +14,13 @@
       <a-tab-pane key="2" tab="Добавить">
         <a-card class="!mb-6" title="Добавить контент">
           <a-tabs default-active-key="1" @change="callback">
+            <!-- 
             <a-tab-pane key="1" tab="Новость"></a-tab-pane>
-            <a-tab-pane key="2" tab="Статья"></a-tab-pane>
+            <a-tab-pane key="2" tab="Статья"></a-tab-pane> 
+            -->
+            <a-tab-pane
+              v-for="(V,K) in content_types"
+             :key="K" :tab="V" />
           </a-tabs>
 
           <a-input v-model="contentData.title" placeholder="title" />
@@ -39,9 +44,13 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    const [content] = await Promise.all([$axios.$get('/admin/content')])
+    const [content, types] = await Promise.all([
+      $axios.$get('/admin/content'),
+      $axios.$get('/dictionary/content-types'),
+    ])
     return {
       contentList: content.data,
+      content_types: types,
     }
   },
   data() {
@@ -66,11 +75,12 @@ export default {
         type_id: this.contentType,
         ...this.contentData,
       })
+      this.reGet()
     },
-    // async Content() {
-    //   const { data } = await this.$axios.$get('/admin/content')
-    //   this.newsList = data
-    // },
+    async reGet() {
+      const { data } = await this.$axios.$get('/admin/content')
+      this.contentList = data
+    },
   },
 }
 </script>
