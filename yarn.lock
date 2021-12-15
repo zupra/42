@@ -1179,11 +1179,11 @@
     ufo "^0.7.4"
 
 "@nuxt/kit@npm:@nuxt/kit-edge@latest":
-  version "3.0.0-27313139.1c88580"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27313139.1c88580.tgz#c4a7fcadb7b2b999980c62751ecd3726468a842d"
-  integrity sha512-QQwmTaF5YkP1dZZ38DC7A3tCH2SQUlzsXN3QgNqys+WzZnZB0dPuyvSqgD6L/Ts7MwIFrooOEIRz0i9iwnJPMQ==
+  version "3.0.0-27324955.23397e6"
+  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27324955.23397e6.tgz#40b606eb4bbe9c4f9850587ec1db7f42b26fa97f"
+  integrity sha512-WfmmRuL6RL5LYwB7hXRRIctW5FnViNdpn2AN1+vR3WsPuZ8AUCSJ40BaWMAMIvM7JJUJizagssUXkOzLWOI++w==
   dependencies:
-    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-27313139.1c88580"
+    "@nuxt/schema" "npm:@nuxt/schema-edge@3.0.0-27324955.23397e6"
     consola "^2.15.3"
     defu "^5.0.0"
     dotenv "^10.0.0"
@@ -1220,10 +1220,10 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
-"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-27313139.1c88580":
-  version "3.0.0-27313139.1c88580"
-  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27313139.1c88580.tgz#9178c9d01e54579d9d12f7875e53b119c7fbb233"
-  integrity sha512-RW4jvMAQK/PK2UdAskRaEnLetafm2n/0g82QymZJi8MsbdpgNbo/6hWx6cGDbljueUhMc/EBrTpYeGSC4FMC1A==
+"@nuxt/schema@npm:@nuxt/schema-edge@3.0.0-27324955.23397e6":
+  version "3.0.0-27324955.23397e6"
+  resolved "https://registry.yarnpkg.com/@nuxt/schema-edge/-/schema-edge-3.0.0-27324955.23397e6.tgz#5fc1dab98cb0635018ee4b343ac6e060188c06dd"
+  integrity sha512-5IJbA2jZaKykiFOrmv/QRzJgk6LR5lpxl1w5KKPPpmpFDQA+G5oMCsXrnt9SfEtc9Rvp6FwyFP+UuJNoeedO1Q==
   dependencies:
     create-require "^1.1.1"
     defu "^5.0.0"
@@ -9785,9 +9785,9 @@ windicss-webpack-plugin@^1.6.0:
     windicss "^3.2.1"
 
 windicss@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.2.1.tgz#bd0f7b9ebabba04ea8dfedcbb0263c2ef9591db4"
-  integrity sha512-LusrIrryBFHAPQ/OOTbS4EWWuzI6eGeJglI9nQ3kDBr1cqH69NWt8Z8q59f9kTkgptXroejmWfksWwqgHs8EVw==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/windicss/-/windicss-3.3.0.tgz#b671ac48e458b010b8eb68561bf28771c05dc5f0"
+  integrity sha512-LxA9iCPEe4lBbC5MGLo6g1gbJxYlTXpDCLJRaHo0EcEN6X0ki26hunOJWGcBvO9qz1r/ead1L7wS5MkSoOCIZQ==
 
 word-wrap@^1.2.3:
   version "1.2.3"

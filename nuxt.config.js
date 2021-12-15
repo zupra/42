@@ -25,17 +25,19 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/styles/main.css',
     'ant-design-vue/dist/antd.css',
-  
 
-    // windi preflight
-      // 'virtual:windi-base.css',
-    // your stylesheets which overrides the preflight
-      // '@/styles/main.css',
-      '~/styles/main', 
-    // windi extras
-      // 'virtual:windi-components.css',
-      // 'virtual:windi-utilities.css',
+    /*    
+      // windi preflight
+        'virtual:windi-base.css',
+      // your stylesheets which overrides the preflight
+        // '@/styles/main.css',
+        '~/styles/main', 
+      // windi extras
+        'virtual:windi-components.css',
+        'virtual:windi-utilities.css',
+    */
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -50,8 +52,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
     'nuxt-windicss',
+    '@nuxtjs/eslint-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
