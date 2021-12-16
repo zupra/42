@@ -14,10 +14,38 @@
         <a-card class="!mb-6" title="Добавить тариф">
           <a-input class="" v-model="tariffData.name" placeholder="name" />
           <a-input
-            class="!mt-4"
+            class="!my-4"
             v-model="tariffData.description"
             placeholder="description"
           />
+          <div class="flex items-center">
+            email_available
+            <a-switch checked-children="on" un-checked-children="off" default-checked />
+          </div>
+
+
+          <h3 class="mt-4">connections</h3>
+          <a-row>
+            <a-col :span="12">
+              <a-slider v-model="inputValue_1" :min="1" :max="10000" />
+            </a-col>
+            <a-col :span="4">
+              <a-input-number v-model="inputValue_1" :min="1" :max="10000" style="marginLeft: 16px" />
+            </a-col>
+          </a-row>
+
+
+          <h3>proxies</h3>
+          <a-row>
+            <a-col :span="12">
+              <a-slider v-model="inputValue_2" :min="1" :max="10000" />
+            </a-col>
+            <a-col :span="4">
+              <a-input-number v-model="inputValue_2" :min="1" :max="10000" style="marginLeft: 16px" />
+            </a-col>
+          </a-row>
+
+
         </a-card>
       </a-tab-pane>
     </a-tabs>
@@ -34,6 +62,11 @@ export default {
   },
   data() {
     return {
+
+      inputValue_1: 4000,
+      inputValue_2: 4000,
+
+      //
       tariffData: {
         name: 'Standart',
         description: 'Best plan',

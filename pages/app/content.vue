@@ -3,12 +3,12 @@
     <a-tabs default-active-key="1">
       <a-tab-pane key="1" tab="Редактировать">
         <a-card class="!mb-6" title="Редактировать контент">
+          <TContent :data="contentList" />
           <pre
             style="height: 300px"
-            class="p-1 bg-gray-50 text-xs overflow-auto resize-y"
+            class="p-1 bg-gray-50 text-[10px] overflow-auto resize-y"
             >{{ contentList }}</pre
           >
-          <TContent :data="contentList" />
         </a-card>
       </a-tab-pane>
       <a-tab-pane key="2" tab="Добавить">
